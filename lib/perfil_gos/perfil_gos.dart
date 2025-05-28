@@ -10,7 +10,7 @@ class DogProfileScreen extends StatelessWidget {
 
   DogProfileScreen({super.key, required this.currentdog});
 
-  CarouselController _carouselController = CarouselController();
+  CarouselSliderController _carouselController = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class DogProfileScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         autoPlay: false,
                         onPageChanged: (index, _) =>
-                            _carouselController = index as CarouselController,
+                            _carouselController = index as CarouselSliderController,
                       ),
                     )),
               ),

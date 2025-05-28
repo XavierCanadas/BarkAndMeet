@@ -40,7 +40,7 @@ class _ChatIndividual2State extends State<ChatIndividual2> {
         // At the top
       } else {
         // At the bottom
-        _fetchMoreMessages();
+        //_fetchMoreMessages();
       }
     }
   }
@@ -57,6 +57,7 @@ class _ChatIndividual2State extends State<ChatIndividual2> {
       }
     });
   }
+  /*
 
   Future<void> _fetchMoreMessages() async {
     if (_loadingMore) return;
@@ -65,10 +66,9 @@ class _ChatIndividual2State extends State<ChatIndividual2> {
       _loadingMore = true;
     });
 
-    QuerySnapshot snapshot = await _chatService.getMessagesWithPagination(
+    QuerySnapshot snapshot =  _chatService.getMessages(
       user.userId,
       widget.reciver.userId,
-      lastDocument: _lastDocument,
     );
 
     setState(() {
@@ -79,6 +79,7 @@ class _ChatIndividual2State extends State<ChatIndividual2> {
       _loadingMore = false;
     });
   }
+  */
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
@@ -125,14 +126,29 @@ class _ChatIndividual2State extends State<ChatIndividual2> {
   }
 
   Widget _buildMessageList() {
-    return ListView.builder(
-      controller: _scrollController,
-      reverse: true,
-      itemCount: _messages.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: _buildMessageItem(_messages[index]),
+    return StreamBuilder(
+      stream: _chatService.getMessages(user.userId, widget.reciver.userId),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Center(
+            child: Text('Error al carregar els missatges'),
+          );
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        return ListView(
+          children: snapshot.data!.docs
+              .map((document) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    // Add padding here
+                    child: _buildMessageItem(document),
+                  ))
+              .toList(),
         );
       },
     );

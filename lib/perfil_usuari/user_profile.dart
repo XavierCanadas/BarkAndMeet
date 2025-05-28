@@ -27,7 +27,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   _UserProfileScreenState({required this.user});
 
-  CarouselController _carouselController1 = CarouselController();
+  CarouselSliderController _carouselController1 = CarouselSliderController();
 
   Future<void> _pickImage() async {
     final pickedFile =
