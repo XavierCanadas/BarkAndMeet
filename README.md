@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # bark and meet
 
 ## Project description
