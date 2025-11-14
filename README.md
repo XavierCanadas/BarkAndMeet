@@ -1,20 +1,12 @@
 <<<<<<< HEAD
-# bark_and_meet
+# bark and meet
 
-A new Flutter project.
+## Project description
+A Flutter app developed for the "Software engineering" course at Universitat Pompeu Fabra. 
+Designed as a social network for dog owners to connect with nearby dogs. It includes a main "match" screen to connect compatible dogs, a chat feature, and a user profile.
 
-## Getting Started
+My Key Contributions:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Bark-Meet
->>>>>>> 72995ead9e1914903a1588baa81739088e9ee2f9
+- App Architecture: Designed the complete app architecture in Flutter, applying prior iOS experience and utilizing GitHub Copilot, achieving full implementation in just 5 days.
+- Dynamic View Transformation: Converted static views designed by the team into fully functional, dynamic interfaces, optimizing the integration between the UI and app logic.
+- Firebase Integration: Configured Firebase Authentication for login, Firestore for managing user, dog, and chat data, and Cloud Storage for multimedia content.
